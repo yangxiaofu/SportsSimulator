@@ -1,0 +1,2 @@
+Game Design Document
+I want to design a sports simulation game.  But I need to start with deciding the core element and designing around that so that it's expandable among other sports. 
