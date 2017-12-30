@@ -58,7 +58,6 @@
      <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\CalendarEditor.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\CoreEventDrawer.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\DateParserTests.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\DongerEditor.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\EventManagerEditor.cs" />
      <Compile Include="Assets\UI\DatePicker\Editor\DatePicker_DateRangeEditor.cs" />
      <Compile Include="Assets\UI\DatePicker\Editor\DatePicker_InputFieldEditor.cs" />

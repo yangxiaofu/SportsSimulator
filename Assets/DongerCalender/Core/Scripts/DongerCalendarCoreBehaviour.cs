@@ -6,8 +6,6 @@ namespace Donger.BuckeyeEngine
 {
 	public class DongerCalendarCoreBehaviour : MonoBehaviour {
 
-		public virtual string HelpBox(){
-			return "";
-		}
+
 	}
 }

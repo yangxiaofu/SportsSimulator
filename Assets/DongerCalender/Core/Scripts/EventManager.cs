@@ -27,11 +27,9 @@ namespace Donger.BuckeyeEngine{
 		[Tooltip("Format the Date by MM-DD-YYYY.  Leave the end date empty if you only want to create it on a particular day.  Or do it on the same day.")]
 
 		[SerializeField] string _endDate;
-
-		List<EventBehaviour> _events = new List<EventBehaviour>();
 		protected Calendar _calendar;
 		protected const string EVENTS = "Events";
-		public override string HelpBox()
+		public string HelpBox()
 		{
 			return "The Event Manager is responsible for handling the events in the calendar.  The Calendar component is required.";
 		}

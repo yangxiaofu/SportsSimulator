@@ -1,3 +1,10 @@
+Creating an Event System
+    -Create an empty gameobject
+    -Add the Calendar Component
+    -Add an Event Manager Component
+
+
+
 The Calendar will be a core feature that will also be used in other sports simulation.  It will contain features that allow 
 Calendar Component
     -A calendar UI that comes by default. 

@@ -6,14 +6,14 @@ using UnityEditor;
 namespace Donger.BuckeyeEngine{
 	public abstract class ListEditorWindow : EditorWindow{
 
-		protected EventsDatabaseEditor _database;
+		protected CalendarEditor _cal;
 		protected int _numberOfColumns = 1;
 		protected float _buttonWidth = 50f;
 
 		///<summary>Sets the the window parameters</summary>
-		public void Setup(EventsDatabaseEditor eventsDatabase, int numberOfColumns, float buttonWidth)
+		public void Setup(CalendarEditor calendar, int numberOfColumns, float buttonWidth)
 		{
-			_database = eventsDatabase;
+			_cal = calendar;
 			_numberOfColumns = numberOfColumns;
 			_buttonWidth = buttonWidth;
 		}

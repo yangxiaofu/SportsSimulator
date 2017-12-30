@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DongerCalender\Core\Database\EventsDatabase.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\Calendar.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\CoreEvents.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\Date.cs" />
@@ -58,7 +59,6 @@
      <Compile Include="Assets\DongerCalender\Core\Scripts\DongerCalendarCoreBehaviour.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\EventBehaviour.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\EventManager.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Scripts\EventsDatabase.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\EventType.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\GameEventBehaviour.cs" />
      <Compile Include="Assets\DongerCalender\Tools\GenerateID.cs" />

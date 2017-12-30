@@ -443,9 +443,50 @@ Prefab:
       propertyPath: _endDate
       value: 2/28/2018
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114101000513255754, guid: 9afcf96b2528a418fba60b097878566c, type: 2}
+    - {fileID: 114668906146950824, guid: 9afcf96b2528a418fba60b097878566c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9afcf96b2528a418fba60b097878566c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &909366702 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1800688281528688, guid: 9afcf96b2528a418fba60b097878566c,
+    type: 2}
+  m_PrefabInternal: {fileID: 909366701}
+--- !u!114 &909366703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909366702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede1dab43d42e4db1a4e56475f761c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _database: {fileID: 0}
+  _parentForEvents: {fileID: 0}
+  _eventType: 0
+  _numberOfEventsToGenerate: 1
+  _beginDate: 
+  _endDate: 
+--- !u!114 &909366704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909366702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a6c9bb2a37f460bad297ddb2b99c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingYear: 2018
+  SelectedYear: 0
+  StartingMonth: 1
+  SelectedMonth: 0
+  StartingDay: 1
+  SelectedDay: 0
 --- !u!1 &2067030985
 GameObject:
   m_ObjectHideFlags: 0

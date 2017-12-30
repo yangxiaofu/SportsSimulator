@@ -24,14 +24,14 @@ namespace Donger.BuckeyeEngine{
 
 		protected override void OnDisable()
 		{
-			if (_database == null) return;
-			_database.YearWindowOpen = false;
+			if (_cal == null) return;
+			_cal.YearWindowOpen = false;
 		}
 
         protected override void CloseWindow(int index)
         {
-            _database.YearWindowOpen = false;
-			_database.Year = index;
+            _cal.YearWindowOpen = false;
+			_cal.Year = index;
 			this.Close();
         }
     }

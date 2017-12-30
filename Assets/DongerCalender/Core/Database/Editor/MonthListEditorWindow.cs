@@ -45,15 +45,14 @@ namespace Donger.BuckeyeEngine{
 
         protected override void OnDisable()
 		{
-            if (_database == null) return;
-			_database.MonthWindowOpen = false;
+            if (_cal == null) return;
+			_cal.MonthWindowOpen = false;
 		}
 
         protected override void CloseWindow(int index)
         {
-            
-            _database.MonthWindowOpen = false;
-            _database.Month = index;
+            _cal.MonthWindowOpen = false;
+            _cal.Month = index;
             this.Close();
             
         }
