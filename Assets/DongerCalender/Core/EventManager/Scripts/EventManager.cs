@@ -7,7 +7,7 @@ using UnityEngine;
 //TODO: Create a class that has dates and what teh event type of.
 namespace Donger.BuckeyeEngine{
 	[RequireComponent(typeof(Calendar))]
-	public class EventManager : DongerCalendarCoreBehaviour {
+	public class EventManager : MonoBehaviour{
 		[Tooltip("The database that stores all of the events in the game.")]
 		[SerializeField] protected EventsDatabase _database;
 

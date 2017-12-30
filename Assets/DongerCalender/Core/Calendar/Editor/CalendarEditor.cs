@@ -53,6 +53,13 @@ namespace Donger.BuckeyeEngine{
             DrawMonthSelector();
             Seperator();
 
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Selected Date", EditorStyles.boldLabel, GUILayout.Width(100));
+            //Display the selected Date
+            var selectedDate = _calendar.SelectedMonth + "/" + _calendar.SelectedDay + "/" + _calendar.SelectedYear;
+            EditorGUILayout.LabelField(selectedDate);
+            EditorGUILayout.EndHorizontal();
+
             float buttonWidth = 50f;
             DrawCalendar(Year, Month, _day, buttonWidth);
 
