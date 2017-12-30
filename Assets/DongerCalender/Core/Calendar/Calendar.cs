@@ -25,10 +25,39 @@ namespace Donger.BuckeyeEngine{
 		public int StartingDay = 1;
 		public int SelectedDay;
 
+		public delegate void Updated(DateTime date);
+		public event Updated OnUpdated;
+
 		public string HelpBox()
 		{
 			return "The Calendar is responsible for handling the dates in the simluation.";
 		}
+		
+		///<summary>Updates the calendar values</summary>
+		public void UpdateCalendar(int year, int month, int day)
+        {
+            SelectedYear = year;
+            SelectedMonth = month;
+            SelectedDay = day;
+
+            NotifyObservers(year, month, day);
+        }
+
+        public void ResetToDefault()
+        {
+            SelectedYear = StartingYear;
+			SelectedMonth = StartingMonth;
+			SelectedDay = StartingDay;
+
+			NotifyObservers(SelectedYear, SelectedMonth, SelectedDay);
+        }
+
+		private void NotifyObservers(int year, int month, int day)
+        {
+            var date = new DateTime(year, month, day);
+            if (OnUpdated != null) OnUpdated(date);
+        }
+
     }
 }
 

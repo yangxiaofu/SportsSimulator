@@ -32,43 +32,55 @@ namespace Donger.BuckeyeEngine{
 		}
 
 		public override void OnInspectorGUI()
-		{
-			serializedObject.Update();
+        {
+            serializedObject.Update();
 
-			DrawHelpBox();
+            //Draw the help box
+            DrawHelpBox();
 
-			//Display the Calendar header
+            //Display the Calendar header
             GUILayout.Label("Calendar", EditorStyles.boldLabel);
-		
-			if (GUILayout.Button("Reset To Default")){
-				Calendar calender = (Calendar)_calendar;
-				Year = calender.StartingYear;
-				Month = calender.StartingMonth;				
-				_day = calender.StartingDay;
-				return;
-			}
 
-			 //Display selector for the months.
+            if (GUILayout.Button("Reset To Default"))
+            {
+                Calendar calender = (Calendar)_calendar;
+                Year = calender.StartingYear;
+                Month = calender.StartingMonth;
+                _day = calender.StartingDay;
+                _calendar.ResetToDefault();
+                return;
+            }
+
+            //Draw the selectors
             DrawYearSelector();
             DrawMonthSelector();
+
             Seperator();
 
+            //Draw the selected date
+            DrawSelectedDate();
+
+            //Draw the calendar
+            float buttonWidth = 50f;
+
+            DrawCalendar(Year, Month, _day, buttonWidth);
+
+            EditorGUILayout.Space();
+
+            serializedObject.ApplyModifiedProperties();
+        }
+
+        ///<summary>Draws the selected date to notify the user.!--</summary>
+        protected void DrawSelectedDate()
+        {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Selected Date", EditorStyles.boldLabel, GUILayout.Width(100));
-            //Display the selected Date
             var selectedDate = _calendar.SelectedMonth + "/" + _calendar.SelectedDay + "/" + _calendar.SelectedYear;
             EditorGUILayout.LabelField(selectedDate);
             EditorGUILayout.EndHorizontal();
+        }
 
-            float buttonWidth = 50f;
-            DrawCalendar(Year, Month, _day, buttonWidth);
-
-			EditorGUILayout.Space();
-
-			serializedObject.ApplyModifiedProperties();
-		}
-
-		private void DrawYearSelector()
+        protected void DrawYearSelector()
         {
             EditorGUILayout.BeginHorizontal();
 
@@ -99,7 +111,7 @@ namespace Donger.BuckeyeEngine{
             EditorGUILayout.EndHorizontal();
         }
 
-		private void DrawMonthSelector()
+		protected void DrawMonthSelector()
         {
             EditorGUILayout.BeginHorizontal();
 
@@ -132,7 +144,7 @@ namespace Donger.BuckeyeEngine{
         }
 
 		///<summary>Draw the calendar GUI</summary>
-        private void DrawCalendar(int year, int month, int day, float buttonWidth)
+        protected void DrawCalendar(int year, int month, int day, float buttonWidth)
         {
             //Get days in the month
             var daysInMonth = DateTime.DaysInMonth(year, month);
@@ -167,10 +179,7 @@ namespace Donger.BuckeyeEngine{
                     if(GUILayout.Button(day.ToString(), GUILayout.Width(buttonWidth)))
 					{
                         //Update the calender monobehaviour
-						_calendar.SelectedDay = day;
-						_calendar.SelectedMonth = month;
-						_calendar.SelectedYear = year;
-                        Debug.Log(month + "/" + day + "/" + year);
+                        _calendar.UpdateCalendar(year, month, day);
 					}
 
                     day++;
@@ -183,7 +192,7 @@ namespace Donger.BuckeyeEngine{
         }
 
 		///<summary> Separator</summary>
-		private void Seperator()
+		protected void Seperator()
         {
             
             EditorGUILayout.Space();
@@ -192,7 +201,7 @@ namespace Donger.BuckeyeEngine{
 
 		///<summary>Returns the integer representation for the day of the week.<para>Returns something</para></summary>
 
-        private int GetDayOfWeekIndex(DayOfWeek dayOfWeek)
+        protected int GetDayOfWeekIndex(DayOfWeek dayOfWeek)
         {
 			if (dayOfWeek == DayOfWeek.Sunday){
 				return 0;
@@ -211,7 +220,7 @@ namespace Donger.BuckeyeEngine{
 			}
 		}
 
-        private void DecreaseMonth()
+        protected void DecreaseMonth()
         {
             Month -= 1;
             if (Month == 0){
@@ -219,7 +228,7 @@ namespace Donger.BuckeyeEngine{
             }
         }
 
-        private void IncreaseMonth()
+        protected void IncreaseMonth()
         {
             Month += 1;
             if (Month == 13){
@@ -227,12 +236,12 @@ namespace Donger.BuckeyeEngine{
             }
         }
 
-        private void IncreaseYear()
+        protected void IncreaseYear()
         {
             Year += 1;
         }
 
-        private void DecreaseYear()
+        protected void DecreaseYear()
         {
             Year -= 1;
         }

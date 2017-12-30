@@ -5,9 +5,13 @@ using UnityEngine;
 //TODO: Should find a way to generate events in the game. 
 //TODO: Find a way to store the events as a List
 //TODO: Create a class that has dates and what teh event type of.
+
+
 namespace Donger.BuckeyeEngine{
 	[RequireComponent(typeof(Calendar))]
-	public class EventManager : MonoBehaviour{
+	[ExecuteInEditMode]
+	public class EventManager : MonoBehaviour
+	{
 		[Tooltip("The database that stores all of the events in the game.")]
 		[SerializeField] protected EventsDatabase _database;
 
@@ -22,11 +26,9 @@ namespace Donger.BuckeyeEngine{
 		[SerializeField] int _numberOfEventsToGenerate = 1;
 
 		[Tooltip("Format the Date by MM-DD-YYYY")]
-		[SerializeField] string _beginDate;
-
-		[Tooltip("Format the Date by MM-DD-YYYY.  Leave the end date empty if you only want to create it on a particular day.  Or do it on the same day.")]
-
-		[SerializeField] string _endDate;
+		public string EventDate;
+		
+		public DateTime selectedDate;
 		protected Calendar _calendar;
 		protected const string EVENTS = "Events";
 		public string HelpBox()
@@ -41,12 +43,16 @@ namespace Donger.BuckeyeEngine{
 
 			//Find the calendar
 			_calendar = GetComponent<Calendar>();
-			if (!_calendar) Debug.LogError("There is no calendar in the game scene.");
-			
-			SimulateEventsForCurrentDay(); //For Testing purposes.
+			_calendar.OnUpdated += OnCalendarUpdated;
 		}
+		
+		///<summary>Callback from the Calendar.cs</summary>
+        void OnCalendarUpdated(DateTime date)
+        {
+            selectedDate = date;
+        }
 
-		public void SimulateEventsForCurrentDay()
+        public void SimulateEventsForCurrentDay()
 		{
 			throw new NotImplementedException();
 		}
@@ -55,8 +61,8 @@ namespace Donger.BuckeyeEngine{
 		public virtual void GenerateEvents()
 		{
 			//Parse the dates into a readable format
-			var beginDate = new DateParser(_beginDate);
-			var endDate = new DateParser(_endDate);
+			var beginDate = new DateParser(EventDate);
+			
 
 			//Do specific type of event depending on the event type.
 			switch(_eventType)
