@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DongerCalendar.Core{
+namespace Donger.BuckeyeEngine{
 	[System.Serializable]
 	public class Date{
 

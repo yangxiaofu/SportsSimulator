@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DongerCalendar.Core{
+namespace Donger.BuckeyeEngine{
 	///<summary>
 	///This behaviour is responsible for simulating each game in the game scene.
 	///</summary>

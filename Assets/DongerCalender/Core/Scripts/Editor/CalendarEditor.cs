@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 
-namespace DongerCalendar.Core{
+namespace Donger.BuckeyeEngine{
 	[CustomEditor(typeof(Calendar))]
 	public class CalendarEditor : DongerEditor{
 		

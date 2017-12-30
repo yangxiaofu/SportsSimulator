@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DongerCalendar.Core{
+namespace Donger.BuckeyeEngine{
 	public abstract class EventBehaviour : MonoBehaviour {
 
 		protected Date _date;

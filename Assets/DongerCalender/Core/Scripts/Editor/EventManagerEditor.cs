@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace DongerCalendar.Core{
+namespace Donger.BuckeyeEngine{
 	[CustomEditor(typeof(EventManager))]
 	public class EventManagerEditor : DongerEditor{
 

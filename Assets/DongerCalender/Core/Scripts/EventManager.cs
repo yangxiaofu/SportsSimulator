@@ -5,7 +5,7 @@ using UnityEngine;
 //TODO: Should find a way to generate events in the game. 
 //TODO: Find a way to store the events as a List
 //TODO: Create a class that has dates and what teh event type of.
-namespace DongerCalendar.Core{
+namespace Donger.BuckeyeEngine{
 	[RequireComponent(typeof(Calendar))]
 	public class EventManager : DongerCalendarCoreBehaviour {
 		[Tooltip("The database that stores all of the events in the game.")]
@@ -24,7 +24,8 @@ namespace DongerCalendar.Core{
 		[Tooltip("Format the Date by MM-DD-YYYY")]
 		[SerializeField] string _beginDate;
 
-		[Tooltip("Format the Date by MM-DD-YYYY")]
+		[Tooltip("Format the Date by MM-DD-YYYY.  Leave the end date empty if you only want to create it on a particular day.  Or do it on the same day.")]
+
 		[SerializeField] string _endDate;
 
 		List<EventBehaviour> _events = new List<EventBehaviour>();
@@ -55,30 +56,35 @@ namespace DongerCalendar.Core{
 		///<summary>Auto Generate Events in the Event Manager</summary>
 		public virtual void GenerateEvents()
 		{
-			
 			//Parse the dates into a readable format
 			var beginDate = new DateParser(_beginDate);
 			var endDate = new DateParser(_endDate);
 
-		
 			//Do specific type of event depending on the event type.
 			switch(_eventType)
 			{
-				case EventType.Game:
-					print("Generating Games"); //TODO: Figure out teh code for generating certain types of events.
-					break;
-				case EventType.Draft: 
-					print("It's a draft");
+                case EventType.Game:
+                    GenerateEvents("Game", beginDate);
+                    break;
+                case EventType.Draft: 
+					GenerateEvents("Draft", beginDate);
 					break;
 				case EventType.Practice:
-					print("It's practice");
+					GenerateEvents("Practice", beginDate);
 					break;
 				case EventType.FreeAgency:
-					print("It's free agency");
+					GenerateEvents("Free Agency", beginDate);
 					break;
 			}
 		}
-	}
 
-
+        private void GenerateEvents(string eventName, DateParser beginDate)
+        {
+            for (int i = 0; i < _numberOfEventsToGenerate; i++)
+            {
+                var coreEvent = new CoreEvent(eventName, beginDate.Date);
+                _database.Add(coreEvent);
+            }
+        }
+    }
 }

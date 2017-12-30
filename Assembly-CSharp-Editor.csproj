@@ -51,7 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DongerCalender\Core\Database\Editor\EventsDatabaseEditor.cs" />
+     <Compile Include="Assets\DongerCalender\Core\Database\Editor\ListEditorWindow.cs" />
+     <Compile Include="Assets\DongerCalender\Core\Database\Editor\MonthListEditorWindow.cs" />
+     <Compile Include="Assets\DongerCalender\Core\Database\Editor\YearListEditorWindow.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\CalendarEditor.cs" />
+     <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\CoreEventDrawer.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\DateParserTests.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\DongerEditor.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\EventManagerEditor.cs" />

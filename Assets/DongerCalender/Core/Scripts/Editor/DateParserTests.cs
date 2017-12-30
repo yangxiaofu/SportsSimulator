@@ -4,7 +4,7 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 
-namespace DongerCalendar.Core.UnitTests{
+namespace Donger.BuckeyeEngine.UnitTests{
 	public class DateParserTests {
 
 		[Test]

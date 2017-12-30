@@ -61,6 +61,7 @@
      <Compile Include="Assets\DongerCalender\Core\Scripts\EventsDatabase.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\EventType.cs" />
      <Compile Include="Assets\DongerCalender\Core\Scripts\GameEventBehaviour.cs" />
+     <Compile Include="Assets\DongerCalender\Tools\GenerateID.cs" />
      <Compile Include="Assets\UI\DatePicker\DatePicker.cs" />
      <Compile Include="Assets\UI\DatePicker\DatePicker_Animator.cs" />
      <Compile Include="Assets\UI\DatePicker\DatePicker_Button.cs" />
