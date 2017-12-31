@@ -51,23 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DongerCalender\Core\Calendar\Editor\CalendarEditor.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Calendar\Editor\ListEditorWindow.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Calendar\Editor\MonthListEditorWindow.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Calendar\Editor\YearListEditorWindow.cs" />
-     <Compile Include="Assets\DongerCalender\Core\EventManager\Editor\EventManagerEditor.cs" />
-     <Compile Include="Assets\DongerCalender\Core\EventManager\Editor\EventsDatabaseEditor.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\CoreEventDrawer.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Scripts\Editor\DateParserTests.cs" />
-     <Compile Include="Assets\UI\DatePicker\Editor\DatePicker_DateRangeEditor.cs" />
-     <Compile Include="Assets\UI\DatePicker\Editor\DatePicker_InputFieldEditor.cs" />
-     <Compile Include="Assets\UI\DatePicker\Editor\DatePicker_MenuItems.cs" />
-     <Compile Include="Assets\UI\DatePicker\Editor\DatePickerDateDrawer.cs" />
-     <Compile Include="Assets\UI\DatePicker\Editor\DatePickerEditor.cs" />
-     <Compile Include="Assets\UI\TableLayout\Editor\TableCellEditor.cs" />
-     <Compile Include="Assets\UI\TableLayout\Editor\TableLayoutEditor.cs" />
-     <Compile Include="Assets\UI\TableLayout\Editor\TableLayoutWizard.cs" />
-     <Compile Include="Assets\UI\TableLayout\Editor\TableRowEditor.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Calendar\Editor\CalendarEditor.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Calendar\Editor\ListEditorWindow.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Calendar\Editor\MonthListEditorWindow.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Calendar\Editor\YearListEditorWindow.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\EventManager\Editor\EventManagerEditor.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\EventManager\Editor\EventsDatabaseEditor.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\Editor\CoreEventDrawer.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\Editor\CoreEventEditorWindow.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\Editor\DateParserTests.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

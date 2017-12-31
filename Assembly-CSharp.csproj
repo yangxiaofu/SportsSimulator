@@ -51,46 +51,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DongerCalender\Core\Calendar\Calendar.cs" />
-     <Compile Include="Assets\DongerCalender\Core\EventManager\Scripts\EventManager.cs" />
-     <Compile Include="Assets\DongerCalender\Core\EventManager\Scripts\EventsDatabase.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Scripts\CoreEvents.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Scripts\Date.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Scripts\DateParser.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Scripts\EventBehaviour.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Scripts\EventType.cs" />
-     <Compile Include="Assets\DongerCalender\Core\Scripts\GameEventBehaviour.cs" />
-     <Compile Include="Assets\DongerCalender\Tools\GenerateID.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_Animator.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_Button.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_Config.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_ContentLayout.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_DateRange.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton_Pool.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_DayHeader.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_Enums.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_Header.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_InputField.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePicker_Instantiation.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePickerExtensions.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePickerTimer.cs" />
-     <Compile Include="Assets\UI\DatePicker\DatePickerUtilities.cs" />
-     <Compile Include="Assets\UI\DatePicker\Example\ExampleController.cs" />
-     <Compile Include="Assets\UI\DatePicker\SerializableDate.cs" />
-     <Compile Include="Assets\UI\TableLayout\Example\DynamicRowsExampleController.cs" />
-     <Compile Include="Assets\UI\TableLayout\Example\TableLayoutExampleController.cs" />
-     <Compile Include="Assets\UI\TableLayout\TableCell.cs" />
-     <Compile Include="Assets\UI\TableLayout\TableLayout.cs" />
-     <Compile Include="Assets\UI\TableLayout\TableLayoutUtilities.cs" />
-     <Compile Include="Assets\UI\TableLayout\TableRow.cs" />
-     <None Include="Assets\UI\DatePicker\Documentation\Change List.txt" />
-     <None Include="Assets\DongerCalender\Documentation\CalendarDesign.txt" />
-     <None Include="Assets\DongerCalender\Documentation\readme.txt" />
-     <None Include="Assets\UI\TableLayout\Documentation\Change List.txt" />
-     <None Include="Assets\DongerCalender\Documentation\GameDesignDocument.txt" />
+     <Compile Include="Assets\DongerCalendar\Core\Calendar\Calendar.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\EventManager\Scripts\EventManager.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\EventManager\Scripts\EventsDatabase.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\CoreEvents.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\Date.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\DateParser.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\EventBehaviour.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\EventType.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\GameEventBehaviour.cs" />
+     <Compile Include="Assets\DongerCalendar\Tools\GenerateID.cs" />
+     <None Include="Assets\DongerCalendar\Documentation\CalendarDesign.txt" />
+     <None Include="Assets\DongerCalendar\Documentation\readme.txt" />
+     <None Include="Assets\DongerCalendar\Documentation\GameDesignDocument.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
