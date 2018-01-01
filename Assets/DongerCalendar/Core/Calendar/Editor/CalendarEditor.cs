@@ -15,20 +15,24 @@ namespace Donger.BuckeyeEngine{
         public bool MonthWindowOpen = false;
         ///<summary>Ensures that the Year Window is only opened once</summary>
         public bool YearWindowOpen = false;
-		private string[] _months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
-        private string[] _daysInWeek = {"Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"};
+		protected string[] _months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
+        protected string[] _daysInWeek = {"Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"};
+        GUISkin _skin;
+        string _path = "Assets/DongerCalendar/Core/GUISkin/GUISkin.guiskin";
+        
 
-		void DrawHelpBox()
+		protected virtual void DrawHelpBox()
         {
             EditorGUILayout.HelpBox(_calendar.HelpBox(), MessageType.Info);
         }
 
-		void OnEnable()
+		protected virtual void OnEnable()
 		{
 			_calendar = (Calendar)target;
 			Year = serializedObject.FindProperty("StartingYear").intValue;
 			Month = serializedObject.FindProperty("StartingMonth").intValue;
 			_day = serializedObject.FindProperty("StartingDay").intValue;
+            _skin = (GUISkin)(AssetDatabase.LoadAssetAtPath(_path, typeof(GUISkin)));
 		}
 
 		public override void OnInspectorGUI()
@@ -71,7 +75,7 @@ namespace Donger.BuckeyeEngine{
         }
 
         ///<summary>Draws the selected date to notify the user.!--</summary>
-        protected void DrawSelectedDate()
+        protected virtual void DrawSelectedDate()
         {
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Selected Date", EditorStyles.boldLabel, GUILayout.Width(100));
@@ -80,7 +84,7 @@ namespace Donger.BuckeyeEngine{
             EditorGUILayout.EndHorizontal();
         }
 
-        protected void DrawYearSelector()
+        protected virtual void DrawYearSelector()
         {
             EditorGUILayout.BeginHorizontal();
 
@@ -111,7 +115,7 @@ namespace Donger.BuckeyeEngine{
             EditorGUILayout.EndHorizontal();
         }
 
-		protected void DrawMonthSelector()
+		protected virtual void DrawMonthSelector()
         {
             EditorGUILayout.BeginHorizontal();
 
@@ -144,12 +148,13 @@ namespace Donger.BuckeyeEngine{
         }
 
 		///<summary>Draw the calendar GUI</summary>
-        protected void DrawCalendar(int year, int month, int day, float buttonWidth)
+        protected virtual void DrawCalendar(int year, int month, int day, float buttonWidth)
         {
             float columnWidth = buttonWidth * 1.05f;
             //Get days in the month
             var daysInMonth = DateTime.DaysInMonth(year, month);
 
+            //List out the days of the week.
             EditorGUILayout.BeginHorizontal();
             for (int i = 0; i < _daysInWeek.Length; i++)
             {
@@ -177,8 +182,21 @@ namespace Donger.BuckeyeEngine{
                 for (int j = dayOfWeekIndex; j < 7; j++)
                 {
                     EditorGUILayout.BeginVertical(GUILayout.Width(columnWidth));
+
+                    //If the calendar contains an EventManager as a Component.
+                    if (_calendar.EventManager)
+                    {
+                        //Refresh the search date.
+                        var searchDate = new DateTime(year, month, day);
+                        var coreEvents = _calendar.EventManager.GetEvents(searchDate);
+                        if (coreEvents.Count > 0){
+                            GUILayout.Box(coreEvents.Count.ToString(), _skin.box, GUILayout.Width(buttonWidth));
+                        } else {
+                            GUILayout.Box(coreEvents.Count.ToString(), GUILayout.Width(buttonWidth));    
+                        }
+                        
+                    }
                     
-                    GUILayout.Box("Test", GUILayout.Width(buttonWidth));
 					//If a day is selected, then update the calendar with the date. 
                     if(GUILayout.Button(day.ToString(), GUILayout.Width(buttonWidth)))
 					{
@@ -199,16 +217,14 @@ namespace Donger.BuckeyeEngine{
         }
 
 		///<summary> Separator</summary>
-		protected void Seperator()
+		protected virtual void Seperator()
         {
-            
             EditorGUILayout.Space();
             EditorGUILayout.Separator();
         }
 
-		///<summary>Returns the integer representation for the day of the week.<para>Returns something</para></summary>
-
-        protected int GetDayOfWeekIndex(DayOfWeek dayOfWeek)
+		///<summary>Returns the integer representation for the day of the week.  Returns the index related to the day.</summary>
+        protected virtual int GetDayOfWeekIndex(DayOfWeek dayOfWeek)
         {
 			if (dayOfWeek == DayOfWeek.Sunday){
 				return 0;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -8,25 +9,16 @@ namespace Donger.BuckeyeEngine{
 	public class EventManagerEditor : Editor{
 		
 		EventManager _eventManager;
-		List<CoreEvent> _coreEvents = new List<CoreEvent>();
 		string _path;
 		GUISkin _skin;
 		CoreEventEditorWindow _coreEventEditorWindow;
 		public bool CoreEventEditorWindowOpen = false;
 
-		void OnEnable()
+		protected virtual void OnEnable()
 		{
 			_eventManager = (EventManager)target;
 			_path = "Assets/DongerCalendar/Core/GUISkin/GUISkin.guiskin";
 		}
-
-		///<summary>Refreshes the current date events</summary>
-		public void RefreshCurrentDateEvents()
-		{
-			_coreEvents.Clear();
-			_coreEvents = _eventManager.GetCurrentDateEvents();
-		}
-
 		public override void OnInspectorGUI(){
 
 			serializedObject.Update();
@@ -38,7 +30,7 @@ namespace Donger.BuckeyeEngine{
 			//Show the number of events on this date. 
 			EditorGUILayout.BeginHorizontal();
 			EditorGUILayout.LabelField("Events On this Date", EditorStyles.boldLabel);
-			EditorGUILayout.LabelField(_coreEvents.Count.ToString());
+			EditorGUILayout.LabelField(_eventManager.CoreEvents.Count.ToString());
 			EditorGUILayout.EndHorizontal();
 
 			//Generate Events Button
@@ -57,10 +49,10 @@ namespace Donger.BuckeyeEngine{
 
 			EditorGUILayout.LabelField("Events on this day");
 
-			for(int i = 0; i < _coreEvents.Count; i++)
+			for(int i = 0; i < _eventManager.CoreEvents.Count; i++)
 			{
 				EditorGUILayout.BeginHorizontal();
-				EditorGUILayout.LabelField(_coreEvents[i].Name, GUILayout.Width(100));
+				EditorGUILayout.LabelField(_eventManager.CoreEvents[i].Name, GUILayout.Width(100));
 				
 				if (GUILayout.Button("Edit", GUI.skin.button, GUILayout.Width(100)))
 				{
@@ -70,14 +62,14 @@ namespace Donger.BuckeyeEngine{
 						//TODO: Open up some window for this particular event.
 						_coreEventEditorWindow = ScriptableObject.CreateInstance<CoreEventEditorWindow>();
 						_coreEventEditorWindow.position = new Rect(Screen.width / 2, Screen.height / 2, 500, 125);
-						_coreEventEditorWindow.Setup(this, _eventManager, _coreEvents[i]);
+						_coreEventEditorWindow.Setup(this, _eventManager, _eventManager.CoreEvents[i]);
 						_coreEventEditorWindow.Show();
 						_coreEventEditorWindow.titleContent = new GUIContent("Core Event");
 						CoreEventEditorWindowOpen = true;
 					} 
 					//otherwise, refresh the editor window with the new information.
 					else {
-						_coreEventEditorWindow.Setup(this, _eventManager, _coreEvents[i]);
+						_coreEventEditorWindow.Setup(this, _eventManager, _eventManager.CoreEvents[i]);
 					}
 					
 					return;
@@ -87,6 +79,14 @@ namespace Donger.BuckeyeEngine{
 			}
 
 			serializedObject.ApplyModifiedProperties();
+		}
+
+		///<summary>Refreshes the current date events</summary>
+		public virtual void RefreshCurrentDateEvents()
+		{
+			var date = _eventManager.selectedDate;
+			var selectedDate = new Date(date.Year, date.Month, date.Day);
+			_eventManager.RefreshCoreEvents(selectedDate);
 		}
     }
 

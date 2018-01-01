@@ -9,7 +9,7 @@ namespace Donger.BuckeyeEngine{
 	//Track the current date in the game (done) 
 	//Track all days in the calendar.  Needs to store events in a certain date. 
 	//Move to a specific date. 
-	
+	[ExecuteInEditMode]
 	public class Calendar : MonoBehaviour
 	{
 		//TODO: Testing.
@@ -27,6 +27,18 @@ namespace Donger.BuckeyeEngine{
 
 		public delegate void Updated(DateTime date);
 		public event Updated OnUpdated;
+
+		private EventManager _eventManager;
+		public EventManager EventManager{get{return _eventManager;}}
+
+
+		void OnEnable()
+		{
+			if (!Application.isPlaying)
+			{
+				_eventManager = GetComponent<EventManager>();
+			}
+		}
 
 		public string HelpBox()
 		{

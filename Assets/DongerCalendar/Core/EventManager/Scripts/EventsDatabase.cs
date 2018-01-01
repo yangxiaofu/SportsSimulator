@@ -33,6 +33,7 @@ namespace Donger.BuckeyeEngine{
 			_events.RemoveAll(x => x.ID == id);
 		}
 
+		///<summary>Gets the events on this particular date</summary>
 		public List<CoreEvent> Find(DateTime date)
 		{
 			List<CoreEvent> events = new List<CoreEvent>();

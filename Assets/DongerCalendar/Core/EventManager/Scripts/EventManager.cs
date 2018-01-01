@@ -22,11 +22,6 @@ namespace Donger.BuckeyeEngine{
 		[Header("Event Generator")]
 		[SerializeField] protected EventType _eventType;
 
-        public void RemoveEvent(string coreEventID)
-        {
-            Database.Remove(coreEventID);
-        }
-
         [Tooltip("This will generate a number of events within the dates below.")]
 		[SerializeField] int _numberOfEventsToGenerate = 1;
 
@@ -34,14 +29,16 @@ namespace Donger.BuckeyeEngine{
 		public DateTime selectedDate;
 		protected Calendar _calendar;
 		protected const string EVENTS = "Events";
+		public List<CoreEvent> CoreEvents = new List<CoreEvent>();
+
 		public string HelpBox()
 		{
 			return "The Event Manager is responsible for handling the events in the calendar.  The Calendar component is required.";
 		}
 
-		void OnEnable()
+		protected virtual void OnEnable()
 		{
-			//If it's in EditorMode
+			//@EditorMode
 			if (!Application.isPlaying)
 			{
 				//Find the calendar, and register to it's notificalendar
@@ -50,23 +47,33 @@ namespace Donger.BuckeyeEngine{
 			}
 		}
 	
-		void Start()
+		protected virtual void Start()
 		{
-			//Runs at runtime.
+			//@Runtime
 			if (Application.isPlaying)
 			{
 				//If parent for events is null, then create it.
 				if (!_parentForEvents) _parentForEvents = new GameObject(EVENTS).transform;
 			}
-			
+		}
+
+		///<summary>Will refresh the core events for the particular day.</summary>
+		public virtual void RefreshCoreEvents(Date date)
+		{
+			CoreEvents.Clear();
+			CoreEvents = GetEvents(date.DateTime);
 		}
 		
 		///<summary>Callback from the Calendar.cs</summary>
-        void OnCalendarUpdated(DateTime date)
+        protected virtual void OnCalendarUpdated(DateTime date)
         {
+			//Update the variables. 
             selectedDate = date;
 			var dateString = date.Month + "/" + date.Day + "/" + date.Year;
 			EventDate = dateString;
+
+			//Will update the display.	
+			RefreshCoreEvents(new Date(date.Year, date.Month, date.Day));
         }
 
 		///<summary>Auto Generate Events in the Event Manager executed primary in the EventManagerEditor</summary>
@@ -93,7 +100,7 @@ namespace Donger.BuckeyeEngine{
 			}
 		}
 
-        private void GenerateEvents(string eventName, DateParser beginDate)
+        protected virtual void GenerateEvents(string eventName, DateParser beginDate)
         {
             for (int i = 0; i < _numberOfEventsToGenerate; i++)
             {
@@ -102,10 +109,15 @@ namespace Donger.BuckeyeEngine{
             }
         }
 
-		///<summary>Gets all of the events for the current date.</summary>
-		public List<CoreEvent> GetCurrentDateEvents()
+		///<summary>Get number of events from this date.</summary>
+		public virtual List<CoreEvent> GetEvents(DateTime date)
 		{
-			return Database.Find(selectedDate);
+			return Database.Find(date);
 		}
+
+        public virtual void RemoveEvent(string coreEventID)
+        {
+            Database.Remove(coreEventID);
+        }
     }
 }
