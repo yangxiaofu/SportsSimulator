@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Donger.BuckeyeEngine;
 
-namespace Game.Core{
+namespace Donger.BuckeyeEngine{
 	public class GameEventBehaviour : EventBehaviour{
         public override void Simulate()
         {

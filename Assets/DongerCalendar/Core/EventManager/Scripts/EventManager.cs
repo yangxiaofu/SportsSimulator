@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Game.Core;
 
 //TODO: Create a class that has dates and what teh event type of.
 

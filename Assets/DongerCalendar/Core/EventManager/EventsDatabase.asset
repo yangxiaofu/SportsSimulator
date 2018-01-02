@@ -11,24 +11,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db172cb26e2a141ce9e84d21d84c771a, type: 3}
   m_Name: EventsDatabase
   m_EditorClassIdentifier: 
-  _events:
-  - Day: 11
-    Month: 1
-    Year: 2018
-    Name: Game
-  - Day: 11
-    Month: 1
-    Year: 2018
-    Name: Game
-  - Day: 11
-    Month: 1
-    Year: 2018
-    Name: Game
-  - Day: 11
-    Month: 1
-    Year: 2018
-    Name: Game
-  - Day: 11
-    Month: 1
-    Year: 2018
-    Name: Game

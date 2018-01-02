@@ -2,10 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Donger.BuckeyeEngine;
 using Donger.Tools;
 
-namespace Game.Core{
+namespace Donger.BuckeyeEngine{
     public class PracticeCoreEvent : CoreEvent
     {
 		public PracticeCoreEvent(string name, DateTime date){

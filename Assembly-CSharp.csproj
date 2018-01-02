@@ -59,12 +59,12 @@
      <Compile Include="Assets\DongerCalendar\Core\Scripts\DateParser.cs" />
      <Compile Include="Assets\DongerCalendar\Core\Scripts\EventBehaviour.cs" />
      <Compile Include="Assets\DongerCalendar\Core\Scripts\EventType.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\GameCoreEvent.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\GameEventBehaviour.cs" />
      <Compile Include="Assets\DongerCalendar\Core\Scripts\ICoreEvents.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\PracticeCoreEvent.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\PracticeEventBehaviour.cs" />
      <Compile Include="Assets\DongerCalendar\Tools\GenerateID.cs" />
-     <Compile Include="Assets\Events\GameCoreEvent.cs" />
-     <Compile Include="Assets\Events\GameEventBehaviour.cs" />
-     <Compile Include="Assets\Events\PracticeCoreEvent.cs" />
-     <Compile Include="Assets\Events\PracticeEventBehaviour.cs" />
      <None Include="Assets\DongerCalendar\Documentation\CalendarDesign.txt" />
      <None Include="Assets\DongerCalendar\Documentation\readme.txt" />
      <None Include="Assets\Documentation\readme.txt" />

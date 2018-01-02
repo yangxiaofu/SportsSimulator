@@ -1,0 +1,7 @@
+Instructions for Creating an event
+    1.) Make sure the eventManager prefab is in the game.
+    2.) Select the date that you want to create an event on. 
+    3.) In the EventManager Component, make sure it's the date that you want. 
+    4.) Select the numuber of games that you want.
+    5.) Select on Generate Event.
+    (Optional) Simulate Event is optional.

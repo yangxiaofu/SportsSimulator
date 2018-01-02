@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Donger.Tools;
-using Game.Core;
 
 namespace Donger.BuckeyeEngine{
     public class GameCoreEvent : CoreEvent
