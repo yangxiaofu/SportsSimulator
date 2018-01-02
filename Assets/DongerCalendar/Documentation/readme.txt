@@ -1,3 +1,4 @@
+Version 1.0
 Directions for creating an EventManager GameObject.
     1. Create an empty gameobject
     2. Add the Calendar Component

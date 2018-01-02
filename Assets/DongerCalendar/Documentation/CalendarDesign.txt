@@ -1,2 +1,4 @@
 Design of the Calendar
-    
+    Upcoming Feature
+        -Create events over a span of time. 
+        -Affordance on days on the type of events there are.

@@ -189,9 +189,13 @@ namespace Donger.BuckeyeEngine{
                         //Refresh the search date.
                         var searchDate = new DateTime(year, month, day);
                         var coreEvents = _calendar.EventManager.GetEvents(searchDate);
+                        //Help the user visually determine if there are events on a particular day.
+                        //If there are events, have a custom look to it. 
                         if (coreEvents.Count > 0){
                             GUILayout.Box(coreEvents.Count.ToString(), _skin.box, GUILayout.Width(buttonWidth));
-                        } else {
+                        } 
+                        //otherwise, just go with the default.  
+                        else {
                             GUILayout.Box(coreEvents.Count.ToString(), GUILayout.Width(buttonWidth));    
                         }
                         
