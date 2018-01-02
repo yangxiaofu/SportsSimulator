@@ -40,6 +40,11 @@ namespace Donger.BuckeyeEngine{
 				return;
 			}
 
+			if (GUILayout.Button("Clear Event Transform")){
+				_eventManager.ClearEventTransform();
+				return;
+			}
+
 			//Shows the current events Button.
 			if (GUILayout.Button("Show Events for Selected Date"))
 			{

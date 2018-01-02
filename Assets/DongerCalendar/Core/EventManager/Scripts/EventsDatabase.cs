@@ -26,7 +26,6 @@ namespace Donger.BuckeyeEngine{
 		{
 			_events.Add(coreEvent);
 		}
-
 		
 		public void Remove(string id)
 		{

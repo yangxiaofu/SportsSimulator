@@ -54,15 +54,20 @@
      <Compile Include="Assets\DongerCalendar\Core\Calendar\Calendar.cs" />
      <Compile Include="Assets\DongerCalendar\Core\EventManager\Scripts\EventManager.cs" />
      <Compile Include="Assets\DongerCalendar\Core\EventManager\Scripts\EventsDatabase.cs" />
-     <Compile Include="Assets\DongerCalendar\Core\Scripts\CoreEvents.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\CoreEvent.cs" />
      <Compile Include="Assets\DongerCalendar\Core\Scripts\Date.cs" />
      <Compile Include="Assets\DongerCalendar\Core\Scripts\DateParser.cs" />
      <Compile Include="Assets\DongerCalendar\Core\Scripts\EventBehaviour.cs" />
      <Compile Include="Assets\DongerCalendar\Core\Scripts\EventType.cs" />
-     <Compile Include="Assets\DongerCalendar\Core\Scripts\GameEventBehaviour.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\ICoreEvents.cs" />
      <Compile Include="Assets\DongerCalendar\Tools\GenerateID.cs" />
+     <Compile Include="Assets\Events\GameCoreEvent.cs" />
+     <Compile Include="Assets\Events\GameEventBehaviour.cs" />
+     <Compile Include="Assets\Events\PracticeCoreEvent.cs" />
+     <Compile Include="Assets\Events\PracticeEventBehaviour.cs" />
      <None Include="Assets\DongerCalendar\Documentation\CalendarDesign.txt" />
      <None Include="Assets\DongerCalendar\Documentation\readme.txt" />
+     <None Include="Assets\Documentation\readme.txt" />
      <None Include="Assets\DongerCalendar\Documentation\GameDesignDocument.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

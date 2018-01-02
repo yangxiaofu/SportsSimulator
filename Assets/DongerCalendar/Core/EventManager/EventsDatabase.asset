@@ -12,10 +12,6 @@ MonoBehaviour:
   m_Name: EventsDatabase
   m_EditorClassIdentifier: 
   _events:
-  - Day: 28
-    Month: 2
-    Year: 2018
-    Name: Game
   - Day: 11
     Month: 1
     Year: 2018
@@ -33,26 +29,6 @@ MonoBehaviour:
     Year: 2018
     Name: Game
   - Day: 11
-    Month: 1
-    Year: 2018
-    Name: Game
-  - Day: 26
-    Month: 1
-    Year: 2018
-    Name: Game
-  - Day: 26
-    Month: 1
-    Year: 2018
-    Name: Game
-  - Day: 26
-    Month: 1
-    Year: 2018
-    Name: Game
-  - Day: 26
-    Month: 1
-    Year: 2018
-    Name: Game
-  - Day: 26
     Month: 1
     Year: 2018
     Name: Game

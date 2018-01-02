@@ -2,10 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//TODO: Should find a way to generate events in the game. 
-//TODO: Find a way to store the events as a List
-//TODO: Create a class that has dates and what teh event type of.
+using Game.Core;
 
+//TODO: Create a class that has dates and what teh event type of.
 
 namespace Donger.BuckeyeEngine{
 	[RequireComponent(typeof(Calendar))]
@@ -59,12 +58,36 @@ namespace Donger.BuckeyeEngine{
 
 		///<summary>Will refresh the core events for the particular day.</summary>
 		public virtual void RefreshCoreEvents(Date date)
-		{
-			CoreEvents.Clear();
-			CoreEvents = GetEvents(date.DateTime);
-		}
-		
-		///<summary>Callback from the Calendar.cs</summary>
+        {
+            ClearEventTransform();
+
+            //clear the events. 
+            CoreEvents.Clear();
+
+            //Get the events. 
+            CoreEvents = GetEvents(date.DateTime);
+
+            //Fill it back up with events if events exist.
+            for (int i = 0; i < CoreEvents.Count; i++)
+            {
+                var eventObject = new GameObject(CoreEvents[i].Name);
+                CoreEvents[i].AddComponentTo(eventObject);
+                CoreEvents[i].InitializeGameObject();
+                eventObject.transform.SetParent(_parentForEvents);
+                eventObject.transform.localPosition = Vector3.zero;
+            }
+        }
+
+		///<summary>Clears the event parent transform</summary>
+        public void ClearEventTransform()
+        {
+			while(_parentForEvents.childCount != 0)
+			{
+             	DestroyImmediate(_parentForEvents.GetChild(0).gameObject);
+         	}
+        }
+
+        ///<summary>Callback from the Calendar.cs</summary>
         protected virtual void OnCalendarUpdated(DateTime date)
         {
 			//Update the variables. 
@@ -81,33 +104,30 @@ namespace Donger.BuckeyeEngine{
 		{
 			//Parse the dates into a readable format
 			var beginDate = new DateParser(EventDate);
-
+			
 			//Do specific type of event depending on the event type.
 			switch(_eventType)
 			{
                 case EventType.Game:
-                    GenerateEvents("Game", beginDate);
+					for (int i = 0; i < _numberOfEventsToGenerate; i++)
+            		{
+						var coreEvent = new GameCoreEvent("Game", beginDate.Date);
+						Database.Add(coreEvent);
+            		}
                     break;
                 case EventType.Draft: 
-					GenerateEvents("Draft", beginDate);
-					break;
+					throw new NotImplementedException();
 				case EventType.Practice:
-					GenerateEvents("Practice", beginDate);
+					for (int i = 0; i < _numberOfEventsToGenerate; i++)
+            		{
+						var coreEvent = new PracticeCoreEvent("Practice", beginDate.Date);
+						Database.Add(coreEvent);
+            		}
 					break;
 				case EventType.FreeAgency:
-					GenerateEvents("Free Agency", beginDate);
-					break;
+					throw new NotImplementedException();					
 			}
 		}
-
-        protected virtual void GenerateEvents(string eventName, DateParser beginDate)
-        {
-            for (int i = 0; i < _numberOfEventsToGenerate; i++)
-            {
-                var coreEvent = new CoreEvent(eventName, beginDate.Date);
-                Database.Add(coreEvent);
-            }
-        }
 
 		///<summary>Get number of events from this date.</summary>
 		public virtual List<CoreEvent> GetEvents(DateTime date)
