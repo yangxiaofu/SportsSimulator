@@ -24,7 +24,9 @@ namespace Donger.BuckeyeEngine{
 		[SerializeField] int _numberOfEventsToGenerate = 1;
 
 		public string EventDate;
-		public DateTime selectedDate;
+		public DateTime selectedDateTime;
+		public Date selectedDate{get{return new Date(selectedDateTime.Year, selectedDateTime.Month, selectedDateTime.Day);}}
+		
 		protected Calendar _calendar;
 		protected const string EVENTS = "Events";
 		public List<CoreEvent> CoreEvents = new List<CoreEvent>();
@@ -52,6 +54,15 @@ namespace Donger.BuckeyeEngine{
 			{
 				//If parent for events is null, then create it.
 				if (!_parentForEvents) _parentForEvents = new GameObject(EVENTS).transform;
+			}
+		}
+
+		void OnGUI()
+		{	
+			var rect = new Rect(0, 0, 250, 100);
+			if (GUI.Button(rect, "Refresh Core Events"))
+			{
+				RefreshCoreEvents(selectedDate);
 			}
 		}
 
@@ -90,7 +101,7 @@ namespace Donger.BuckeyeEngine{
         protected virtual void OnCalendarUpdated(DateTime date)
         {
 			//Update the variables. 
-            selectedDate = date;
+            selectedDateTime = date;
 			var dateString = date.Month + "/" + date.Day + "/" + date.Year;
 			EventDate = dateString;
 
@@ -136,7 +147,7 @@ namespace Donger.BuckeyeEngine{
 
         public virtual void RemoveEvent(string coreEventID)
         {
-            Database.Remove(coreEventID);
+            Database.RemoveAll(coreEventID);
         }
     }
 }

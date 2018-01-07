@@ -64,7 +64,10 @@
      <Compile Include="Assets\DongerCalendar\Core\Scripts\ICoreEvents.cs" />
      <Compile Include="Assets\DongerCalendar\Core\Scripts\PracticeCoreEvent.cs" />
      <Compile Include="Assets\DongerCalendar\Core\Scripts\PracticeEventBehaviour.cs" />
+     <Compile Include="Assets\DongerCalendar\Core\Scripts\Vector3ExtensionMethod.cs" />
      <Compile Include="Assets\DongerCalendar\Tools\GenerateID.cs" />
+     <Compile Include="Assets\UI\StarterUI.cs" />
+     <None Include="Assets\UI\Documentation\readme.txt" />
      <None Include="Assets\DongerCalendar\Documentation\CalendarDesign.txt" />
      <None Include="Assets\DongerCalendar\Documentation\readme.txt" />
      <None Include="Assets\Documentation\readme.txt" />

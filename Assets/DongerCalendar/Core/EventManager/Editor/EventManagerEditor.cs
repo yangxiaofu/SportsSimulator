@@ -7,7 +7,6 @@ using UnityEditor;
 namespace Donger.BuckeyeEngine{
 	[CustomEditor(typeof(EventManager))]
 	public class EventManagerEditor : Editor{
-		
 		EventManager _eventManager;
 		string _path;
 		GUISkin _skin;
@@ -89,7 +88,7 @@ namespace Donger.BuckeyeEngine{
 		///<summary>Refreshes the current date events</summary>
 		public virtual void RefreshCurrentDateEvents()
 		{
-			var date = _eventManager.selectedDate;
+			var date = _eventManager.selectedDateTime;
 			var selectedDate = new Date(date.Year, date.Month, date.Day);
 			_eventManager.RefreshCoreEvents(selectedDate);
 		}

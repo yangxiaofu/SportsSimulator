@@ -10,6 +10,7 @@ namespace Donger.BuckeyeEngine{
 	///<summary> 
 	///This is the database in which all events will be stored.</summary>
 	///</summary>
+	[System.Serializable]
 	public class EventsDatabase : ScriptableObject {
 
 		///<summary>Returns a helpbox string description of this class.</summary>
@@ -18,7 +19,6 @@ namespace Donger.BuckeyeEngine{
 			return "This is meant to display the events on the selected day.  You can find the events for the day after selecting a day.";
 		}
 		[SerializeField] List<CoreEvent> _events = new List<CoreEvent>();
-		
 		///<summary>This list of Core Events</summary>
 		public List<CoreEvent> Events{get{return _events;}}
 
@@ -27,7 +27,7 @@ namespace Donger.BuckeyeEngine{
 			_events.Add(coreEvent);
 		}
 		
-		public void Remove(string id)
+		public void RemoveAll(string id)
 		{
 			_events.RemoveAll(x => x.ID == id);
 		}

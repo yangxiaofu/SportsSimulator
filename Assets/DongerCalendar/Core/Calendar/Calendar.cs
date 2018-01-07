@@ -28,13 +28,21 @@ namespace Donger.BuckeyeEngine{
 		public delegate void Updated(DateTime date);
 		public event Updated OnUpdated;
 
-		private EventManager _eventManager;
+		protected EventManager _eventManager;
 		public EventManager EventManager{get{return _eventManager;}}
 
 
-		void OnEnable()
+		protected virtual void OnEnable()
 		{
 			if (!Application.isPlaying)
+			{
+				_eventManager = GetComponent<EventManager>();
+			}
+		}
+
+		protected virtual void Start()
+		{
+			if (Application.isPlaying)
 			{
 				_eventManager = GetComponent<EventManager>();
 			}
@@ -46,7 +54,7 @@ namespace Donger.BuckeyeEngine{
 		}
 		
 		///<summary>Updates the calendar values</summary>
-		public void UpdateCalendar(int year, int month, int day)
+		public virtual void UpdateCalendar(int year, int month, int day)
         {
             SelectedYear = year;
             SelectedMonth = month;
@@ -55,13 +63,10 @@ namespace Donger.BuckeyeEngine{
             NotifyObservers(year, month, day);
         }
 
-        public void ResetToDefault()
+		///<summary>Resets the calendar to the default values</summary>
+        public virtual void ResetToDefault()
         {
-            SelectedYear = StartingYear;
-			SelectedMonth = StartingMonth;
-			SelectedDay = StartingDay;
-
-			NotifyObservers(SelectedYear, SelectedMonth, SelectedDay);
+			UpdateCalendar(StartingYear, StartingMonth, StartingDay);
         }
 
 		protected virtual void NotifyObservers(int year, int month, int day)
